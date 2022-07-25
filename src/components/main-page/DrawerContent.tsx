@@ -16,8 +16,6 @@ const DrawerContent = () => {
   const theme = useTheme();
   return (
     <div>
-      <Toolbar />
-      <Divider />
       <List>
         <ListItemButton>
           <ListItemIcon>
