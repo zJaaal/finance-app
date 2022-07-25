@@ -18,7 +18,7 @@ const DashboardPage = () => {
         container
         item
         justifyContent={"space-between"}
-        alignItems={"center"}
+        alignItems={"start"}
         columnSpacing={2}
         rowSpacing={2}
         padding={2}

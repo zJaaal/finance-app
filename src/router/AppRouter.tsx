@@ -13,7 +13,7 @@ const AppRouter = () => {
   return (
     <>
       <NavBar />
-      <Grid container height={"100vh"}>
+      <Grid container height={"100%"}>
         <Routes>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/login" element={<LoginPage />} />
