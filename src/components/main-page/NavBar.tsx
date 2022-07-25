@@ -19,7 +19,7 @@ const NavBar = () => {
     setOpen(!open);
   };
   return (
-    <Box display={"flex"}>
+    <Box display={"flex"} width="100%">
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -40,6 +40,7 @@ const NavBar = () => {
         <Drawer
           variant="temporary"
           open={open}
+          onClick={handleDrawerToggle}
           onClose={handleDrawerToggle}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.

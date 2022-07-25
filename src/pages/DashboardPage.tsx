@@ -11,21 +11,14 @@ import Chart from "../components/main-page/Chart";
 
 import "../styles/pages/MainPage.css";
 
-const MainPage = () => {
+const DashboardPage = () => {
   return (
-    <Grid
-      container
-      justifyContent={"space-between"}
-      flexDirection={"column"}
-      height={"100%"}
-    >
-      <NavBar />
+    <>
       <Grid
         container
         item
         justifyContent={"space-between"}
         alignItems={"center"}
-        height={"100%"}
         columnSpacing={2}
         rowSpacing={2}
         padding={2}
@@ -233,8 +226,8 @@ const MainPage = () => {
           <Chart color="#ed6c02" type="Expenses" />
         </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 };
 
-export default MainPage;
+export default DashboardPage;

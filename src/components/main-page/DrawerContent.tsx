@@ -12,45 +12,56 @@ import SavingsIcon from "@mui/icons-material/Savings";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import PaymentIcon from "@mui/icons-material/Payment";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
+import { Link } from "react-router-dom";
 const DrawerContent = () => {
   const theme = useTheme();
   return (
     <div>
       <List>
-        <ListItemButton>
-          <ListItemIcon>
-            <DashboardIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Dashboard"} />
-        </ListItemButton>
+        <Link to="/">
+          <ListItemButton>
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Dashboard"} />
+          </ListItemButton>
+        </Link>
 
-        <ListItemButton>
-          <ListItemIcon>
-            <SavingsIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Savings"} />
-        </ListItemButton>
+        <Link to="/savings">
+          <ListItemButton>
+            <ListItemIcon>
+              <SavingsIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Savings"} />
+          </ListItemButton>
+        </Link>
 
-        <ListItemButton>
-          <ListItemIcon>
-            <PaymentIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Debts"} />
-        </ListItemButton>
+        <Link to="/debts">
+          <ListItemButton>
+            <ListItemIcon>
+              <PaymentIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Debts"} />
+          </ListItemButton>
+        </Link>
 
-        <ListItemButton>
-          <ListItemIcon>
-            <AttachMoneyIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Expenses"} />
-        </ListItemButton>
+        <Link to="/expenses">
+          <ListItemButton>
+            <ListItemIcon>
+              <AttachMoneyIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Expenses"} />
+          </ListItemButton>
+        </Link>
 
-        <ListItemButton>
-          <ListItemIcon>
-            <SettingsApplicationsIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Settings"} />
-        </ListItemButton>
+        <Link to="/settings">
+          <ListItemButton>
+            <ListItemIcon>
+              <SettingsApplicationsIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Settings"} />
+          </ListItemButton>
+        </Link>
       </List>
     </div>
   );

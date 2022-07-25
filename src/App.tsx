@@ -1,13 +1,15 @@
 import { CssBaseline, Paper } from "@mui/material";
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./router/AppRouter";
+
 import "./App.css";
-import MainPage from "./pages/MainPage";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <CssBaseline />
-      <MainPage />
-    </>
+      <AppRouter />
+    </BrowserRouter>
   );
 }
 
