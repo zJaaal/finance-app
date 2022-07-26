@@ -1,9 +1,17 @@
 import { Grid, Typography, ButtonGroup, Button } from "@mui/material";
 import { GridRowsProp, GridColDef, DataGrid } from "@mui/x-data-grid";
-import React from "react";
+import { useDispatch } from "react-redux";
+import { modalOpen } from "../actions/ui/modal";
+import PaymentsModal from "../components/payments-page/PaymentsModal";
 import IPayment from "../interfaces/IPayment";
 
 const PaymentsPage = () => {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(modalOpen());
+  };
+
   const rows: GridRowsProp<IPayment> = [
     {
       id: 1,
@@ -86,6 +94,7 @@ const PaymentsPage = () => {
   ];
   return (
     <Grid container item xs direction={"column"} height={"100%"}>
+      <PaymentsModal />
       <Grid item xs={1} padding={2}>
         <Typography variant="h4" color="initial" align="center">
           Payments
@@ -102,7 +111,9 @@ const PaymentsPage = () => {
         padding={2}
       >
         <Grid item>
-          <Button variant={"contained"}>Add Payment</Button>
+          <Button variant={"contained"} onClick={handleClick}>
+            Add Payment
+          </Button>
         </Grid>
       </Grid>
     </Grid>
