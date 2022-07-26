@@ -1,20 +1,17 @@
 import {
-  Toolbar,
   List,
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Divider,
-  useTheme,
 } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import SavingsIcon from "@mui/icons-material/Savings";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import PaymentIcon from "@mui/icons-material/Payment";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import { Link } from "react-router-dom";
 const DrawerContent = () => {
-  const theme = useTheme();
   return (
     <div>
       <List>
@@ -24,6 +21,15 @@ const DrawerContent = () => {
               <DashboardIcon />
             </ListItemIcon>
             <ListItemText primary={"Dashboard"} />
+          </ListItemButton>
+        </Link>
+
+        <Link to="/payments">
+          <ListItemButton>
+            <ListItemIcon>
+              <AccountBalanceWalletIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Payments"} />
           </ListItemButton>
         </Link>
 

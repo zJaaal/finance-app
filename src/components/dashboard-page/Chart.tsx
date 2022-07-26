@@ -12,24 +12,28 @@ import {
 const Chart = ({ color, type }: { color: string; type: string }) => {
   const expenses: IExpense[] = [
     {
+      id: 1,
       title: "Games",
       description: "I bought some games",
       amount: 60,
       date: "July, 25",
     },
     {
+      id: 2,
       title: "Games",
       description: "I bought some games",
       amount: 1000,
       date: "July, 26",
     },
     {
+      id: 3,
       title: "Games",
       description: "I bought some games",
       amount: 200,
       date: "July, 27",
     },
     {
+      id: 4,
       title: "Games",
       description: "I bought some games",
       amount: 3000,
