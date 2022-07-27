@@ -8,7 +8,7 @@ import ExpensesPage from "../pages/ExpensesPage";
 import DebtsPage from "../pages/DebtsPage";
 import SavingsPage from "../pages/SavingsPage";
 import SettingsPage from "../pages/SettingsPage";
-import PaymentsPage from "../pages/PaymentsPage";
+import EarningsPage from "../pages/EarningsPage";
 
 const AppRouter = () => {
   return (
@@ -16,7 +16,7 @@ const AppRouter = () => {
       <NavBar />
       <Routes>
         <Route path="/" element={<DashboardPage />} />
-        <Route path="/payments" element={<PaymentsPage />} />
+        <Route path="/earnings" element={<EarningsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/expenses" element={<ExpensesPage />} />
         <Route path="/debts" element={<DebtsPage />} />

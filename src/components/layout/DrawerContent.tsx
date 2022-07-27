@@ -24,12 +24,12 @@ const DrawerContent = () => {
           </ListItemButton>
         </Link>
 
-        <Link to="/payments">
+        <Link to="/earnings">
           <ListItemButton>
             <ListItemIcon>
               <AccountBalanceWalletIcon />
             </ListItemIcon>
-            <ListItemText primary={"Payments"} />
+            <ListItemText primary={"Earnings"} />
           </ListItemButton>
         </Link>
 
