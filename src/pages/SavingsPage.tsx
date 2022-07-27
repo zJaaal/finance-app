@@ -72,7 +72,7 @@ const SavingsPage = () => {
           Savings
         </Typography>
       </Grid>
-      <Grid item xs={9} padding={2}>
+      <Grid item xs={8} padding={2}>
         <DataGrid columns={columns} rows={rows} />
       </Grid>
       <Grid
