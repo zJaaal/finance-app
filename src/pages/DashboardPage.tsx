@@ -1,12 +1,4 @@
-import { Grid, Paper, Typography, Button } from "@mui/material";
-
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import SavingsIcon from "@mui/icons-material/Savings";
-import PaymentIcon from "@mui/icons-material/Payment";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import PaidIcon from "@mui/icons-material/Paid";
-
-import Chart from "../components/dashboard-page/Chart";
+import { Grid } from "@mui/material";
 
 import "../styles/pages/MainPage.css";
 import Cards from "../components/dashboard-page/Cards";
