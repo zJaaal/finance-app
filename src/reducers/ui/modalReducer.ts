@@ -1,13 +1,12 @@
-import { typographyClasses } from "@mui/material";
 import types from "../../store/types";
-import IAction from "../IAction";
 import IModal from "./IModal";
+import IModalAction from "./IModalAction";
 
 const initialState: IModal = {
   isOpen: false,
 };
 
-const modalReducer = (state: IModal = initialState, action: IAction) => {
+const modalReducer = (state: IModal = initialState, action: IModalAction) => {
   switch (action.type) {
     case types.modalOpen: {
       return { ...state, isOpen: true };
