@@ -1,75 +1,37 @@
-import { Grid, Typography, ButtonGroup, Button } from "@mui/material";
+import { Grid, Typography, Button } from "@mui/material";
 import { GridRowsProp, GridColDef, DataGrid } from "@mui/x-data-grid";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { IRootState } from "../reducers/rootReducer";
 import { modalOpen } from "../actions/ui/modal";
+import {
+  cleanActiveEarning,
+  selectActiveEarning,
+  deleteEarning,
+} from "../actions/earning/earning";
 import EarningsModal from "../components/earnings-page/EarningsModal";
 import IPayment from "../interfaces/IPayment";
+import IEarning from "../reducers/earning/IEarning";
 
 const EarningsPage = () => {
   const dispatch = useDispatch();
+  const earning: IEarning = useSelector((state: IRootState) => state.earning);
 
   const handleClick = () => {
     dispatch(modalOpen());
   };
+  const handleDelete = () => {
+    dispatch(deleteEarning());
+  };
 
-  const rows: GridRowsProp<IPayment> = [
-    {
-      id: 1,
-      title: "Salary",
-      description: "",
-      amount: 100000,
-      date: "07/26/2022",
-    },
-    {
-      id: 2,
-      title: "Some payment I got from mentoring",
-      description: "",
-      amount: 5000,
-      date: "07/28/2022",
-    },
-    {
-      id: 3,
-      title: "salary",
-      description: "",
-      amount: 100000,
-      date: "07/29/2022",
-    },
-    {
-      id: 4,
-      title: "Mentoring",
-      description: "",
-      amount: 15000,
-      date: "07/30/2022",
-    },
-    {
-      id: 5,
-      title: "50% of payment",
-      description: "Diego's web page",
-      amount: 50000,
-      date: "08/01/2022",
-    },
-    {
-      id: 6,
-      title: "Favor I did to Diego",
-      description: "",
-      amount: 40000,
-      date: "08/03/2022",
-    },
-    {
-      id: 9,
-      title: "Mentoring payment",
-      description: "",
-      amount: 6000,
-      date: "08/05/2022",
-    },
-    {
-      id: 10,
-      title: "30% of work",
-      description: "Alberto's page",
-      amount: 50000,
-      date: "08/15/2022",
-    },
-  ];
+  const handleRowClick = () => {
+    dispatch(cleanActiveEarning());
+  };
+  const handleDoubleClick = ({ row }: { row: IPayment }) => {
+    console.log(row);
+    dispatch(selectActiveEarning(row));
+  };
+
+  const rows: GridRowsProp<IPayment> = earning.earnings;
   const columns: GridColDef[] = [
     {
       field: "id",
@@ -101,7 +63,13 @@ const EarningsPage = () => {
         </Typography>
       </Grid>
       <Grid item xs={8} padding={2}>
-        <DataGrid columns={columns} rows={rows} />
+        <DataGrid
+          columns={columns}
+          rows={rows}
+          onRowClick={handleRowClick}
+          onRowDoubleClick={handleDoubleClick}
+          disableSelectionOnClick
+        />
       </Grid>
       <Grid
         container
@@ -110,9 +78,19 @@ const EarningsPage = () => {
         xs={1}
         padding={2}
       >
+        <Grid item marginRight={1}>
+          <Button
+            variant={"contained"}
+            onClick={handleDelete}
+            color="error"
+            disabled={!earning.activeEarning}
+          >
+            Delete
+          </Button>
+        </Grid>
         <Grid item>
           <Button variant={"contained"} onClick={handleClick}>
-            Add Earning
+            {!earning.activeEarning ? "Add Earning" : "Update"}
           </Button>
         </Grid>
       </Grid>
