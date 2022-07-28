@@ -7,6 +7,12 @@ const types = {
   earningUpdate: "[Earning] Earning updated",
   earningSelectActive: "[Earning] Earning active selected",
   earningCleanActive: "[Earning] Earning active cleaned",
+
+  savingAdd: "[Saving] Saving added",
+  savingDelete: "[Saving] Saving deleted",
+  savingUpdate: "[Saving] Saving updated",
+  savingSelectActive: "[Saving] Saving active selected",
+  savingCleanActive: "[Saving] Saving active cleaned",
 };
 
 export default types;
