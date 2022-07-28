@@ -1,7 +1,7 @@
 interface ISaving {
-  id: number;
+  id?: number;
   amount: number;
-  date: string;
+  date: string | Date;
 }
 
 export default ISaving;
