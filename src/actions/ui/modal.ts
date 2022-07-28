@@ -1,10 +1,10 @@
-import IAction from "../../reducers/IAction";
+import IModalAction from "../../reducers/ui/IModalAction";
 import types from "../../store/types";
 
-export const modalOpen = (): IAction => ({
+export const modalOpen = (): IModalAction => ({
   type: types.modalOpen,
 });
 
-export const modalClose = (): IAction => ({
+export const modalClose = (): IModalAction => ({
   type: types.modalClose,
 });
