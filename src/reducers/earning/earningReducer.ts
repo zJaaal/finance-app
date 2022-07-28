@@ -1,9 +1,9 @@
 import IPayment from "../../interfaces/IPayment";
 import types from "../../store/types";
-import IEarning from "./IEarning";
+import IEarningState from "./IEarningState";
 import IEarningAction from "./IEarningAction";
 
-const initialState: IEarning = {
+const initialState: IEarningState = {
   earnings: [
     {
       id: 1,
@@ -24,20 +24,20 @@ const initialState: IEarning = {
 };
 
 const earningReducer = (
-  state: IEarning = initialState,
+  state: IEarningState = initialState,
   action: IEarningAction
 ) => {
   switch (action.type) {
     case types.earningAdd: {
       return {
         ...state,
-        earnings: [action.payload as IPayment, ...state.earnings],
+        earnings: [action.payload, ...state.earnings],
       };
     }
     case types.earningSelectActive: {
       return {
         ...state,
-        activeEarning: action.payload as IPayment,
+        activeEarning: action.payload,
       };
     }
     case types.earningCleanActive: {
@@ -50,9 +50,7 @@ const earningReducer = (
       return {
         ...state,
         earnings: state.earnings.map((earning) =>
-          earning.id == (action.payload as IPayment).id
-            ? action.payload
-            : earning
+          earning.id == action.payload?.id ? action.payload : earning
         ),
       };
     }
@@ -60,7 +58,7 @@ const earningReducer = (
       return {
         ...state,
         earnings: state.earnings.filter(
-          (earning) => earning.id != (state.activeEarning as IPayment).id
+          (earning) => earning.id != state.activeEarning?.id
         ),
         activeEarning: null,
       };
