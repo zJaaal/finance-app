@@ -1,35 +1,52 @@
 import React, { useEffect } from "react";
+import { Dayjs } from "dayjs";
 import { DatePicker } from "@mui/x-date-pickers";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { useDispatch, useSelector } from "react-redux";
 import { Divider, InputAdornment, TextField, Button } from "@mui/material";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
+
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import AddIcon from "@mui/icons-material/Add";
+import UpdateIcon from "@mui/icons-material/Update";
 import IPayment from "../../interfaces/IPayment";
-import { Dayjs } from "dayjs";
-import { useDispatch } from "react-redux";
+
 import { modalClose } from "../../actions/ui/modal";
+import { addEarning, updateEarning } from "../../actions/earning/earning";
+import { IRootState } from "../../reducers/rootReducer";
+
+const initialValues: IPayment = {
+  title: "",
+  description: "",
+  date: new Date(Date.now()),
+  amount: 0,
+};
 
 const EarningForm = () => {
+  const activeEarning: IPayment | null = useSelector(
+    (state: IRootState) => state.earning.activeEarning
+  );
   const {
     handleSubmit,
     control,
     formState: { errors },
   } = useForm<IPayment>({
-    defaultValues: {
-      title: "",
-      description: "",
-      date: new Date(Date.now()),
-      amount: 0,
-    },
+    defaultValues: !activeEarning ? initialValues : activeEarning,
+    mode: "onBlur",
+    reValidateMode: "onChange",
   });
+
   const dispatch = useDispatch();
 
   const onSubmit: SubmitHandler<IPayment> = (data) => {
-    console.log({ ...data, date: new Date(data.date) });
+    if (activeEarning) {
+      dispatch(updateEarning(data));
+    } else {
+      dispatch(addEarning({ ...data, id: Date.now() }));
+    }
     dispatch(modalClose());
   };
 
@@ -51,7 +68,7 @@ const EarningForm = () => {
       >
         <AccountBalanceWalletIcon color="primary" sx={{ fontSize: "30px" }} />
         <Typography variant="h5" color="initial" marginLeft={1}>
-          Add Earning
+          {!activeEarning ? "Add Earning" : "Update Earning"}
         </Typography>
       </Grid>
       <Divider sx={{ width: "100%" }} />
@@ -136,7 +153,8 @@ const EarningForm = () => {
                       sx={{
                         width: {
                           xs: "100%",
-                          sm: "auto",
+                          sm: "100%",
+                          md: "auto",
                         },
                       }}
                       helperText={errors.date?.message}
@@ -161,11 +179,13 @@ const EarningForm = () => {
                 sx={{
                   marginTop: {
                     xs: "16px",
-                    sm: "0px",
+                    sm: "16px",
+                    md: "0px",
                   },
                   width: {
                     xs: "100%",
-                    sm: "auto",
+                    sm: "100%",
+                    md: "auto",
                   },
                 }}
                 helperText={errors.amount?.message}
@@ -181,8 +201,8 @@ const EarningForm = () => {
             rules={{
               required: "Amount is required",
               min: {
-                value: 0,
-                message: "Amount should be more than 0",
+                value: 1,
+                message: "Amount should be at least 1",
               },
             }}
           />
@@ -197,11 +217,11 @@ const EarningForm = () => {
       >
         <Button
           variant="contained"
-          startIcon={<AddIcon />}
+          startIcon={!activeEarning ? <AddIcon /> : <UpdateIcon />}
           type="submit"
           disabled={!!Object.entries(errors).length}
         >
-          Add
+          {!activeEarning ? "Add" : "Update"}
         </Button>
       </Grid>
     </Grid>
