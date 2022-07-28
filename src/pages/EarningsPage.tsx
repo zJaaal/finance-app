@@ -10,11 +10,13 @@ import {
 } from "../actions/earning/earning";
 import EarningsModal from "../components/earnings-page/EarningsModal";
 import IPayment from "../interfaces/IPayment";
-import IEarning from "../reducers/earning/IEarning";
+import IEarningState from "../reducers/earning/IEarningState";
 
 const EarningsPage = () => {
   const dispatch = useDispatch();
-  const earning: IEarning = useSelector((state: IRootState) => state.earning);
+  const earning: IEarningState = useSelector(
+    (state: IRootState) => state.earning
+  );
 
   const handleClick = () => {
     dispatch(modalOpen());
@@ -26,8 +28,7 @@ const EarningsPage = () => {
   const handleRowClick = () => {
     dispatch(cleanActiveEarning());
   };
-  const handleDoubleClick = ({ row }: { row: IPayment }) => {
-    console.log(row);
+  const handleRowDoubleClick = ({ row }: { row: IPayment }) => {
     dispatch(selectActiveEarning(row));
   };
 
@@ -67,7 +68,7 @@ const EarningsPage = () => {
           columns={columns}
           rows={rows}
           onRowClick={handleRowClick}
-          onRowDoubleClick={handleDoubleClick}
+          onRowDoubleClick={handleRowDoubleClick}
           disableSelectionOnClick
         />
       </Grid>

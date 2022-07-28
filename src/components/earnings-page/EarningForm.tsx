@@ -26,8 +26,8 @@ const initialValues: IPayment = {
 };
 
 const EarningForm = () => {
-  const activeEarning: IPayment | null = useSelector(
-    (state: IRootState) => state.earning.activeEarning
+  const { activeEarning }: { activeEarning: IPayment | null } = useSelector(
+    (state: IRootState) => state.earning
   );
   const {
     handleSubmit,
