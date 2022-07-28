@@ -1,6 +1,7 @@
 import { Modal, Backdrop, Fade, Box, Typography } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { cleanActiveEarning } from "../../actions/earning/earning";
 import { modalClose } from "../../actions/ui/modal";
 import { IRootState } from "../../reducers/rootReducer";
 import EarningForm from "./EarningForm";
@@ -21,13 +22,19 @@ const style = {
 
 const EarningsModal = () => {
   const isOpen = useSelector((state: IRootState) => state.modal.isOpen);
+
   const dispatch = useDispatch();
+
+  const handleClose = () => {
+    dispatch(modalClose());
+    dispatch(cleanActiveEarning());
+  };
   return (
     <Modal
       aria-labelledby="transition-modal-title"
       aria-describedby="transition-modal-description"
       open={isOpen}
-      onClose={() => dispatch(modalClose())}
+      onClose={handleClose}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{
