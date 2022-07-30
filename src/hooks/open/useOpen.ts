@@ -25,7 +25,7 @@ const useOpen = (type: ModalType) => {
         break;
       }
       default:
-        return;
+        return setIsOpen(false);
     }
   };
 

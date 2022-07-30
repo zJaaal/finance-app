@@ -2,7 +2,6 @@ import { Grid, Typography, Button } from "@mui/material";
 import { GridRowsProp, GridColDef, DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../reducers/rootReducer";
-import { modalOpen } from "../actions/ui/modal";
 import {
   earningDelete,
   earningSelectActive,
@@ -17,9 +16,13 @@ import useOpen from "../hooks/open/useOpen";
 
 const EarningsPage = () => {
   const dispatch = useDispatch();
-  const { isOpen, handleOpen, handleClose } = useOpen(ModalType.EARNING);
+
   const earning: IEarningState = useSelector(
     (state: IRootState) => state.earning
+  );
+
+  const { isOpen, handleOpen, handleClose } = useOpen(
+    earning.activeEarning ? ModalType.EARNING : ModalType.GENERAL
   );
 
   const handleDelete = () => {
