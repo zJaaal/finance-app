@@ -1,5 +1,6 @@
+import SavingActions from "../../actions/saving/enum/SavingActions";
+import { savingActions } from "../../actions/saving/saving";
 import types from "../../store/types";
-import ISavingAction from "./ISavingAction";
 import ISavingState from "./ISavingState";
 
 const initialState: ISavingState = {
@@ -25,28 +26,28 @@ const initialState: ISavingState = {
 
 const savingReducer = (
   state: ISavingState = initialState,
-  action: ISavingAction
+  action: savingActions
 ) => {
   switch (action.type) {
-    case types.savingAdd: {
+    case SavingActions.savingAdd: {
       return {
         ...state,
         savings: [action.payload, ...state.savings],
       };
     }
-    case types.savingSelectActive: {
+    case SavingActions.savingSelectActive: {
       return {
         ...state,
         activeSaving: action.payload,
       };
     }
-    case types.savingCleanActive: {
+    case SavingActions.savingCleanActive: {
       return {
         ...state,
         activeSaving: null,
       };
     }
-    case types.savingUpdate: {
+    case SavingActions.savingUpdate: {
       return {
         ...state,
         savings: state.savings.map((saving) =>
@@ -54,7 +55,7 @@ const savingReducer = (
         ),
       };
     }
-    case types.savingDelete: {
+    case SavingActions.savingDelete: {
       return {
         ...state,
         savings: state.savings.filter(

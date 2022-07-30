@@ -1,25 +1,32 @@
 import ISaving from "../../interfaces/ISaving";
-import types from "../../store/types";
+import SavingActions from "./enum/SavingActions";
 
-export const addSaving = (saving: ISaving) => ({
-  type: types.savingAdd,
-  payload: saving,
-});
+export type savingAdd = {
+  type: typeof SavingActions.savingAdd;
+  payload: ISaving;
+};
 
-export const updateSaving = (saving: ISaving) => ({
-  type: types.savingUpdate,
-  payload: saving,
-});
+export type savingUpdate = {
+  type: typeof SavingActions.savingUpdate;
+  payload: ISaving;
+};
 
-export const deleteSaving = () => ({
-  type: types.savingDelete,
-});
+export type savingDelete = {
+  type: typeof SavingActions.savingDelete;
+};
 
-export const selectActiveSaving = (saving: ISaving) => ({
-  type: types.savingSelectActive,
-  payload: saving,
-});
+export type savingSelectActive = {
+  type: typeof SavingActions.savingSelectActive;
+  payload: ISaving;
+};
 
-export const cleanActiveSaving = () => ({
-  type: types.savingCleanActive,
-});
+export type savingCleanActive = {
+  type: typeof SavingActions.savingCleanActive;
+};
+
+export type savingActions =
+  | savingAdd
+  | savingUpdate
+  | savingDelete
+  | savingSelectActive
+  | savingCleanActive;
