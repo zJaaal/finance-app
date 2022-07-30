@@ -34,7 +34,7 @@ const SavingForm = ({ handleClose }: { handleClose: Function }) => {
     control,
     formState: { errors },
   } = useForm<ISaving>({
-    defaultValues: !activeSaving ? initialValues : activeSaving,
+    defaultValues: activeSaving || initialValues,
     mode: "onBlur",
     reValidateMode: "onChange",
   });

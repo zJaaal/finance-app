@@ -1,4 +1,4 @@
-import { Modal, Backdrop, Fade, Box, Typography } from "@mui/material";
+import { Modal, Backdrop, Fade, Box } from "@mui/material";
 import EarningForm from "./EarningForm";
 
 const style = {

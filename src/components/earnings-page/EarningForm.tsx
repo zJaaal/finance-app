@@ -34,7 +34,7 @@ const EarningForm = ({ handleClose }: { handleClose: Function }) => {
     control,
     formState: { errors },
   } = useForm<IPayment>({
-    defaultValues: !activeEarning ? initialValues : activeEarning,
+    defaultValues: activeEarning || initialValues,
     mode: "onBlur",
     reValidateMode: "onChange",
   });
