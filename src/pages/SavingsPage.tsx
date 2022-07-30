@@ -27,15 +27,15 @@ const SavingsPage = () => {
   );
 
   const handleDelete = () => {
-    dispatch<savingDelete>({ type: SavingActions.savingDelete });
+    dispatch<savingDelete>({ type: SavingActions.SAVING_DELETE });
   };
 
   const handleRowClick = () => {
-    dispatch<savingCleanActive>({ type: SavingActions.savingCleanActive });
+    dispatch<savingCleanActive>({ type: SavingActions.SAVING_CLEAN_ACTIVE });
   };
   const handleRowDoubleClick = ({ row }: { row: ISaving }) => {
     dispatch<savingSelectActive>({
-      type: SavingActions.savingSelectActive,
+      type: SavingActions.SAVING_SELECT_ACTIVE,
       payload: row,
     });
   };

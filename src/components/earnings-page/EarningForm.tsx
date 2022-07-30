@@ -44,12 +44,12 @@ const EarningForm = ({ handleClose }: { handleClose: Function }) => {
   const onSubmit: SubmitHandler<IPayment> = (data) => {
     if (activeEarning) {
       dispatch<earningUpdate>({
-        type: EarningActions.earningUpdate,
+        type: EarningActions.EARNING_UPDATE,
         payload: data,
       });
     } else {
       dispatch<earningAdd>({
-        type: EarningActions.earningAdd,
+        type: EarningActions.EARNING_ADD,
         payload: { ...data, id: Date.now() },
       });
     }

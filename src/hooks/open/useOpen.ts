@@ -21,13 +21,15 @@ const useOpen = (type: ModalType) => {
       case ModalType.EARNING: {
         setIsOpen(false);
         dispatch<earningCleanActive>({
-          type: EarningActions.earningCleanActive,
+          type: EarningActions.EARNING_CLEAN_ACTIVE,
         });
         break;
       }
       case ModalType.SAVING: {
         setIsOpen(false);
-        dispatch<savingCleanActive>({ type: SavingActions.savingCleanActive });
+        dispatch<savingCleanActive>({
+          type: SavingActions.SAVING_CLEAN_ACTIVE,
+        });
         break;
       }
       case ModalType.EXPENSE: {

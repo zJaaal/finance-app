@@ -26,15 +26,15 @@ const EarningsPage = () => {
   );
 
   const handleDelete = () => {
-    dispatch<earningDelete>({ type: EarningActions.earningDelete });
+    dispatch<earningDelete>({ type: EarningActions.EARNING_DELETE });
   };
 
   const handleRowClick = () => {
-    dispatch<earningCleanActive>({ type: EarningActions.earningCleanActive });
+    dispatch<earningCleanActive>({ type: EarningActions.EARNING_CLEAN_ACTIVE });
   };
   const handleRowDoubleClick = ({ row }: { row: IPayment }) => {
     dispatch<earningSelectActive>({
-      type: EarningActions.earningSelectActive,
+      type: EarningActions.EARNING_SELECT_ACTIVE,
       payload: row,
     });
   };

@@ -42,12 +42,12 @@ const SavingForm = ({ handleClose }: { handleClose: Function }) => {
   const onSubmit: SubmitHandler<ISaving> = (data) => {
     if (activeSaving) {
       dispatch<savingUpdate>({
-        type: SavingActions.savingUpdate,
+        type: SavingActions.SAVING_UPDATE,
         payload: data,
       });
     } else {
       dispatch<savingAdd>({
-        type: SavingActions.savingAdd,
+        type: SavingActions.SAVING_ADD,
         payload: { ...data, id: Date.now() },
       });
     }

@@ -29,25 +29,25 @@ const savingReducer = (
   action: savingActions
 ) => {
   switch (action.type) {
-    case SavingActions.savingAdd: {
+    case SavingActions.SAVING_ADD: {
       return {
         ...state,
         savings: [action.payload, ...state.savings],
       };
     }
-    case SavingActions.savingSelectActive: {
+    case SavingActions.SAVING_SELECT_ACTIVE: {
       return {
         ...state,
         activeSaving: action.payload,
       };
     }
-    case SavingActions.savingCleanActive: {
+    case SavingActions.SAVING_CLEAN_ACTIVE: {
       return {
         ...state,
         activeSaving: null,
       };
     }
-    case SavingActions.savingUpdate: {
+    case SavingActions.SAVING_UPDATE: {
       return {
         ...state,
         savings: state.savings.map((saving) =>
@@ -55,7 +55,7 @@ const savingReducer = (
         ),
       };
     }
-    case SavingActions.savingDelete: {
+    case SavingActions.SAVING_DELETE: {
       return {
         ...state,
         savings: state.savings.filter(

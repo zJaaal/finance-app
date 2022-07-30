@@ -1,9 +1,9 @@
 enum EarningActions {
-  earningAdd = "[Earning] Earning added",
-  earningDelete = "[Earning] Earning deleted",
-  earningUpdate = "[Earning] Earning updated",
-  earningSelectActive = "[Earning] Earning active selected",
-  earningCleanActive = "[Earning] Earning active cleaned",
+  EARNING_ADD = "EARNING_ADD",
+  EARNING_DELETE = "EARNING_DELETE",
+  EARNING_UPDATE = "EARNING_UPDATE",
+  EARNING_SELECT_ACTIVE = "EARNING_SELECT_ACTIVE",
+  EARNING_CLEAN_ACTIVE = "EARNING_CLEAN_ACTIVE",
 }
 
 export default EarningActions;

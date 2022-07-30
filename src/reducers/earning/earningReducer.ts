@@ -30,25 +30,25 @@ const earningReducer = (
   action: earningActions
 ) => {
   switch (action.type) {
-    case EarningActions.earningAdd: {
+    case EarningActions.EARNING_ADD: {
       return {
         ...state,
         earnings: [action.payload, ...state.earnings],
       };
     }
-    case EarningActions.earningSelectActive: {
+    case EarningActions.EARNING_SELECT_ACTIVE: {
       return {
         ...state,
         activeEarning: action.payload,
       };
     }
-    case EarningActions.earningCleanActive: {
+    case EarningActions.EARNING_CLEAN_ACTIVE: {
       return {
         ...state,
         activeEarning: null,
       };
     }
-    case EarningActions.earningUpdate: {
+    case EarningActions.EARNING_UPDATE: {
       return {
         ...state,
         earnings: state.earnings.map((earning) =>
@@ -56,7 +56,7 @@ const earningReducer = (
         ),
       };
     }
-    case EarningActions.earningDelete: {
+    case EarningActions.EARNING_DELETE: {
       return {
         ...state,
         earnings: state.earnings.filter(
