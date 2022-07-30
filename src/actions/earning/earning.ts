@@ -1,24 +1,32 @@
 import IPayment from "../../interfaces/IPayment";
 import types from "../../store/types";
+import EarningActions from "./enum/EarningActions";
 
-export const addEarning = (earning: IPayment) => ({
-  type: types.earningAdd,
-  payload: earning,
-});
+export type earningAdd = {
+  type: typeof EarningActions.earningAdd;
+  payload: IPayment;
+};
 
-export const selectActiveEarning = (earning: IPayment) => ({
-  type: types.earningSelectActive,
-  payload: earning,
-});
-export const cleanActiveEarning = () => ({
-  type: types.earningCleanActive,
-});
+export type earningSelectActive = {
+  type: typeof EarningActions.earningSelectActive;
+  payload: IPayment;
+};
+export type earningCleanActive = {
+  type: typeof EarningActions.earningCleanActive;
+};
 
-export const updateEarning = (earning: IPayment) => ({
-  type: types.earningUpdate,
-  payload: earning,
-});
+export type earningUpdate = {
+  type: typeof EarningActions.earningUpdate;
+  payload: IPayment;
+};
 
-export const deleteEarning = () => ({
-  type: types.earningDelete,
-});
+export type earningDelete = {
+  type: typeof EarningActions.earningDelete;
+};
+
+export type earningActions =
+  | earningAdd
+  | earningSelectActive
+  | earningCleanActive
+  | earningUpdate
+  | earningDelete;
