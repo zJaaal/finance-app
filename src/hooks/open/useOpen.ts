@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+
+import ModalType from "./ModalType";
+
 import { earningCleanActive } from "../../actions/earning/earning";
 import EarningActions from "../../actions/earning/enum/EarningActions";
-import SavingActions from "../../actions/saving/enum/SavingActions";
+
 import { savingCleanActive } from "../../actions/saving/saving";
-import ModalType from "./ModalType";
+import SavingActions from "../../actions/saving/enum/SavingActions";
+
+import { expenseCleanActive } from "../../actions/expense/expense";
+import ExpenseActions from "../../actions/expense/enum/ExpenseActions";
 
 const useOpen = (type: ModalType) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,6 +28,13 @@ const useOpen = (type: ModalType) => {
       case ModalType.SAVING: {
         setIsOpen(false);
         dispatch<savingCleanActive>({ type: SavingActions.savingCleanActive });
+        break;
+      }
+      case ModalType.EXPENSE: {
+        setIsOpen(false);
+        dispatch<expenseCleanActive>({
+          type: ExpenseActions.EXPENSE_CLEAN_ACTIVE,
+        });
         break;
       }
       default:

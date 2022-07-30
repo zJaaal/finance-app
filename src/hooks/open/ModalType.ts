@@ -4,6 +4,7 @@ import ISavingState from "../../reducers/saving/ISavingState";
 enum ModalType {
   EARNING = "EARNING_MODAL",
   SAVING = "SAVING_MODAL",
+  EXPENSE = "EXPENSE_MODAL",
 
   GENERAL = "GENERAL_MODAL",
 }
