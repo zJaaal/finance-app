@@ -13,17 +13,17 @@ import SavingsIcon from "@mui/icons-material/Savings";
 import AddIcon from "@mui/icons-material/Add";
 import UpdateIcon from "@mui/icons-material/Update";
 
-import { modalClose } from "../../actions/ui/modal";
 import { IRootState } from "../../reducers/rootReducer";
-import { addSaving, updateSaving } from "../../actions/saving/saving";
+import { savingAdd, savingUpdate } from "../../actions/saving/saving";
 import ISaving from "../../interfaces/ISaving";
+import SavingActions from "../../actions/saving/enum/SavingActions";
 
 const initialValues: ISaving = {
   amount: 0,
   date: new Date(Date.now()),
 };
 
-const SavingForm = () => {
+const SavingForm = ({ handleClose }: { handleClose: Function }) => {
   const { activeSaving }: { activeSaving: ISaving | null } = useSelector(
     (state: IRootState) => state.saving
   );
@@ -41,11 +41,17 @@ const SavingForm = () => {
 
   const onSubmit: SubmitHandler<ISaving> = (data) => {
     if (activeSaving) {
-      dispatch(updateSaving(data));
+      dispatch<savingUpdate>({
+        type: SavingActions.savingUpdate,
+        payload: data,
+      });
     } else {
-      dispatch(addSaving({ ...data, id: Date.now() }));
+      dispatch<savingAdd>({
+        type: SavingActions.savingAdd,
+        payload: { ...data, id: Date.now() },
+      });
     }
-    dispatch(modalClose());
+    handleClose();
   };
 
   return (

@@ -14,9 +14,9 @@ import AddIcon from "@mui/icons-material/Add";
 import UpdateIcon from "@mui/icons-material/Update";
 import IPayment from "../../interfaces/IPayment";
 
-import { modalClose } from "../../actions/ui/modal";
-import { addEarning, updateEarning } from "../../actions/earning/earning";
 import { IRootState } from "../../reducers/rootReducer";
+import { earningAdd, earningUpdate } from "../../actions/earning/earning";
+import EarningActions from "../../actions/earning/enum/EarningActions";
 
 const initialValues: IPayment = {
   title: "",
@@ -25,7 +25,7 @@ const initialValues: IPayment = {
   amount: 0,
 };
 
-const EarningForm = () => {
+const EarningForm = ({ handleClose }: { handleClose: Function }) => {
   const { activeEarning }: { activeEarning: IPayment | null } = useSelector(
     (state: IRootState) => state.earning
   );
@@ -43,11 +43,17 @@ const EarningForm = () => {
 
   const onSubmit: SubmitHandler<IPayment> = (data) => {
     if (activeEarning) {
-      dispatch(updateEarning(data));
+      dispatch<earningUpdate>({
+        type: EarningActions.earningUpdate,
+        payload: data,
+      });
     } else {
-      dispatch(addEarning({ ...data, id: Date.now() }));
+      dispatch<earningAdd>({
+        type: EarningActions.earningAdd,
+        payload: { ...data, id: Date.now() },
+      });
     }
-    dispatch(modalClose());
+    handleClose();
   };
 
   return (

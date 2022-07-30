@@ -4,32 +4,36 @@ import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../reducers/rootReducer";
 import { modalOpen } from "../actions/ui/modal";
 import {
-  cleanActiveEarning,
-  selectActiveEarning,
-  deleteEarning,
+  earningDelete,
+  earningSelectActive,
+  earningCleanActive,
 } from "../actions/earning/earning";
 import EarningsModal from "../components/earnings-page/EarningsModal";
 import IPayment from "../interfaces/IPayment";
 import IEarningState from "../reducers/earning/IEarningState";
+import EarningActions from "../actions/earning/enum/EarningActions";
+import ModalType from "../hooks/open/ModalType";
+import useOpen from "../hooks/open/useOpen";
 
 const EarningsPage = () => {
   const dispatch = useDispatch();
+  const { isOpen, handleOpen, handleClose } = useOpen(ModalType.EARNING);
   const earning: IEarningState = useSelector(
     (state: IRootState) => state.earning
   );
 
-  const handleClick = () => {
-    dispatch(modalOpen());
-  };
   const handleDelete = () => {
-    dispatch(deleteEarning());
+    dispatch<earningDelete>({ type: EarningActions.earningDelete });
   };
 
   const handleRowClick = () => {
-    dispatch(cleanActiveEarning());
+    dispatch<earningCleanActive>({ type: EarningActions.earningCleanActive });
   };
   const handleRowDoubleClick = ({ row }: { row: IPayment }) => {
-    dispatch(selectActiveEarning(row));
+    dispatch<earningSelectActive>({
+      type: EarningActions.earningSelectActive,
+      payload: row,
+    });
   };
 
   const rows: GridRowsProp<IPayment> = earning.earnings;
@@ -57,7 +61,7 @@ const EarningsPage = () => {
   ];
   return (
     <Grid container item xs direction={"column"} height={"100%"}>
-      <EarningsModal />
+      <EarningsModal isOpen={isOpen} handleClose={handleClose} />
       <Grid item xs={1} padding={2}>
         <Typography variant="h4" color="initial" align="center">
           Earnings
@@ -90,7 +94,7 @@ const EarningsPage = () => {
           </Button>
         </Grid>
         <Grid item>
-          <Button variant={"contained"} onClick={handleClick}>
+          <Button variant={"contained"} onClick={handleOpen}>
             {!earning.activeEarning ? "Add Earning" : "Update"}
           </Button>
         </Grid>

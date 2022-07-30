@@ -10,28 +10,31 @@ import ISavingState from "../reducers/saving/ISavingState";
 import ISaving from "../interfaces/ISaving";
 import { modalOpen } from "../actions/ui/modal";
 import {
-  cleanActiveSaving,
-  deleteSaving,
-  selectActiveSaving,
+  savingCleanActive,
+  savingDelete,
+  savingSelectActive,
 } from "../actions/saving/saving";
+import SavingActions from "../actions/saving/enum/SavingActions";
+import useOpen from "../hooks/open/useOpen";
+import ModalType from "../hooks/open/ModalType";
 
 const SavingsPage = () => {
   const dispatch = useDispatch();
+  const { isOpen, handleOpen, handleClose } = useOpen(ModalType.SAVING);
   const saving: ISavingState = useSelector((state: IRootState) => state.saving);
 
-  const handleClick = () => {
-    dispatch(modalOpen());
+  const handleDelete = () => {
+    dispatch<savingDelete>({ type: SavingActions.savingDelete });
   };
 
   const handleRowClick = () => {
-    dispatch(cleanActiveSaving());
+    dispatch<savingCleanActive>({ type: SavingActions.savingCleanActive });
   };
   const handleRowDoubleClick = ({ row }: { row: ISaving }) => {
-    dispatch(selectActiveSaving(row));
-  };
-
-  const handleDelete = () => {
-    dispatch(deleteSaving());
+    dispatch<savingSelectActive>({
+      type: SavingActions.savingSelectActive,
+      payload: row,
+    });
   };
 
   const rows: GridRowsProp<ISaving> = saving.savings;
@@ -54,7 +57,7 @@ const SavingsPage = () => {
   ];
   return (
     <Grid container item xs direction={"column"} height={"100%"}>
-      <SavingsModal />
+      <SavingsModal isOpen={isOpen} handleClose={handleClose} />
       <Grid item xs={1} padding={2}>
         <Typography variant="h4" color="initial" align="center">
           Savings
@@ -87,7 +90,7 @@ const SavingsPage = () => {
           </Button>
         </Grid>
         <Grid item>
-          <Button variant="contained" onClick={handleClick}>
+          <Button variant="contained" onClick={handleOpen}>
             {!saving.activeSaving ? "Add Saving" : "Update Saving"}
           </Button>
         </Grid>
