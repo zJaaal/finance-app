@@ -1,9 +1,9 @@
 interface IExpense {
-  id: number;
+  id?: number;
   title: string;
   description: string;
   amount: number;
-  date: string;
+  date: string | Date;
 }
 
 export default IExpense;
