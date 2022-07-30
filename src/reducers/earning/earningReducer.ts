@@ -2,6 +2,8 @@ import IPayment from "../../interfaces/IPayment";
 import types from "../../store/types";
 import IEarningState from "./IEarningState";
 import IEarningAction from "./IEarningAction";
+import { earningActions } from "../../actions/earning/earning";
+import EarningActions from "../../actions/earning/enum/EarningActions";
 
 const initialState: IEarningState = {
   earnings: [
@@ -25,28 +27,28 @@ const initialState: IEarningState = {
 
 const earningReducer = (
   state: IEarningState = initialState,
-  action: IEarningAction
+  action: earningActions
 ) => {
   switch (action.type) {
-    case types.earningAdd: {
+    case EarningActions.earningAdd: {
       return {
         ...state,
         earnings: [action.payload, ...state.earnings],
       };
     }
-    case types.earningSelectActive: {
+    case EarningActions.earningSelectActive: {
       return {
         ...state,
         activeEarning: action.payload,
       };
     }
-    case types.earningCleanActive: {
+    case EarningActions.earningCleanActive: {
       return {
         ...state,
         activeEarning: null,
       };
     }
-    case types.earningUpdate: {
+    case EarningActions.earningUpdate: {
       return {
         ...state,
         earnings: state.earnings.map((earning) =>
@@ -54,7 +56,7 @@ const earningReducer = (
         ),
       };
     }
-    case types.earningDelete: {
+    case EarningActions.earningDelete: {
       return {
         ...state,
         earnings: state.earnings.filter(
