@@ -48,11 +48,13 @@ const SavingsPage = () => {
       flex: 0.2,
     },
     {
+      type: "number",
       field: "amount",
       headerName: "Amount",
       flex: 1,
     },
     {
+      type: "date",
       field: "date",
       headerName: "Created at",
       flex: 1,
