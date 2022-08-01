@@ -5,7 +5,6 @@ interface IDebt {
   title: string;
   description: string;
   date: string | Date;
-  deadline?: string | Date;
   payments: IPayment[];
   paid: boolean;
 }
