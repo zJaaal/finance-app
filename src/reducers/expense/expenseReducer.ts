@@ -60,6 +60,7 @@ const expenseReducer = (
         expenses: state.expenses.filter(
           (expense) => expense.id != state.activeExpense?.id
         ),
+        activeExpense: null,
       };
     }
     default:
