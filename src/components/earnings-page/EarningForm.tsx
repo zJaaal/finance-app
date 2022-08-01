@@ -15,10 +15,14 @@ import UpdateIcon from "@mui/icons-material/Update";
 import IPayment from "../../interfaces/IPayment";
 
 import { IRootState } from "../../reducers/rootReducer";
-import { earningAdd, earningUpdate } from "../../actions/earning/earning";
+import {
+  earningAdd,
+  earningUpdate,
+} from "../../actions/earning/earningActions";
 import EarningActions from "../../actions/earning/enum/EarningActions";
 
 const initialValues: IPayment = {
+  id: Date.now(),
   title: "",
   description: "",
   date: new Date(Date.now()),
@@ -50,7 +54,7 @@ const EarningForm = ({ handleClose }: { handleClose: Function }) => {
     } else {
       dispatch<earningAdd>({
         type: EarningActions.EARNING_ADD,
-        payload: { ...data, id: Date.now() },
+        payload: data,
       });
     }
     handleClose();

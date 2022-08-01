@@ -1,6 +1,5 @@
 import ExpenseActions from "../../actions/expense/enum/ExpenseActions";
-import { expenseActions } from "../../actions/expense/expense";
-import IExpense from "../../interfaces/IExpense";
+import { expenseActions } from "../../actions/expense/expenseActions";
 import IExpenseState from "./IExpenseState";
 
 const initialState: IExpenseState = {

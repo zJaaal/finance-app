@@ -11,7 +11,7 @@ import {
   expenseCleanActive,
   expenseDelete,
   expenseSelectActive,
-} from "../actions/expense/expense";
+} from "../actions/expense/expenseActions";
 import ExpenseActions from "../actions/expense/enum/ExpenseActions";
 
 const ExpensesPage = () => {

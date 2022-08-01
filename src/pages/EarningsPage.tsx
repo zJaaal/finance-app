@@ -6,7 +6,7 @@ import {
   earningDelete,
   earningSelectActive,
   earningCleanActive,
-} from "../actions/earning/earning";
+} from "../actions/earning/earningActions";
 import EarningsModal from "../components/earnings-page/EarningsModal";
 import IPayment from "../interfaces/IPayment";
 import IEarningState from "../reducers/earning/IEarningState";

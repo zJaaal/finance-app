@@ -14,11 +14,12 @@ import AddIcon from "@mui/icons-material/Add";
 import UpdateIcon from "@mui/icons-material/Update";
 
 import { IRootState } from "../../reducers/rootReducer";
-import { savingAdd, savingUpdate } from "../../actions/saving/saving";
+import { savingAdd, savingUpdate } from "../../actions/saving/savingActions";
 import ISaving from "../../interfaces/ISaving";
 import SavingActions from "../../actions/saving/enum/SavingActions";
 
 const initialValues: ISaving = {
+  id: Date.now(),
   amount: 0,
   date: new Date(Date.now()),
 };

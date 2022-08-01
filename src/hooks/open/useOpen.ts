@@ -3,13 +3,13 @@ import { useDispatch } from "react-redux";
 
 import ModalType from "./ModalType";
 
-import { earningCleanActive } from "../../actions/earning/earning";
+import { earningCleanActive } from "../../actions/earning/earningActions";
 import EarningActions from "../../actions/earning/enum/EarningActions";
 
-import { savingCleanActive } from "../../actions/saving/saving";
+import { savingCleanActive } from "../../actions/saving/savingActions";
 import SavingActions from "../../actions/saving/enum/SavingActions";
 
-import { expenseCleanActive } from "../../actions/expense/expense";
+import { expenseCleanActive } from "../../actions/expense/expenseActions";
 import ExpenseActions from "../../actions/expense/enum/ExpenseActions";
 
 const useOpen = (type: ModalType) => {
@@ -38,6 +38,9 @@ const useOpen = (type: ModalType) => {
           type: ExpenseActions.EXPENSE_CLEAN_ACTIVE,
         });
         break;
+      }
+      case ModalType.DEBT: {
+        setIsOpen(false);
       }
       default:
         return setIsOpen(false);

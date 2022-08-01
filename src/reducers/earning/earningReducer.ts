@@ -1,8 +1,7 @@
 import IPayment from "../../interfaces/IPayment";
-import types from "../../store/types";
+
 import IEarningState from "./IEarningState";
-import IEarningAction from "./IEarningAction";
-import { earningActions } from "../../actions/earning/earning";
+import { earningActions } from "../../actions/earning/earningActions";
 import EarningActions from "../../actions/earning/enum/EarningActions";
 
 const initialState: IEarningState = {

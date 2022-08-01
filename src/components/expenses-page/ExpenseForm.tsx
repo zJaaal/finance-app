@@ -14,11 +14,15 @@ import AddIcon from "@mui/icons-material/Add";
 import UpdateIcon from "@mui/icons-material/Update";
 
 import { IRootState } from "../../reducers/rootReducer";
-import { expenseAdd, expenseUpdate } from "../../actions/expense/expense";
+import {
+  expenseAdd,
+  expenseUpdate,
+} from "../../actions/expense/expenseActions";
 import IExpense from "../../interfaces/IExpense";
 import ExpenseActions from "../../actions/expense/enum/ExpenseActions";
 
 const initialValues: IExpense = {
+  id: Date.now(),
   title: "",
   description: "",
   date: new Date(Date.now()),
@@ -50,7 +54,7 @@ const ExpenseForm = ({ handleClose }: { handleClose: Function }) => {
     } else {
       dispatch<expenseAdd>({
         type: ExpenseActions.EXPENSE_ADD,
-        payload: { ...data, id: Date.now() },
+        payload: data,
       });
     }
     handleClose();

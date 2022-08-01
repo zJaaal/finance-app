@@ -1,6 +1,5 @@
 import SavingActions from "../../actions/saving/enum/SavingActions";
-import { savingActions } from "../../actions/saving/saving";
-import types from "../../store/types";
+import { savingActions } from "../../actions/saving/savingActions";
 import ISavingState from "./ISavingState";
 
 const initialState: ISavingState = {
