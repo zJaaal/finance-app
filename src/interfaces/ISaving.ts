@@ -1,5 +1,5 @@
 interface ISaving {
-  id?: number;
+  id: number;
   amount: number;
   date: string | Date;
 }

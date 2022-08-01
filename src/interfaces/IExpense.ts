@@ -1,5 +1,5 @@
 interface IExpense {
-  id?: number;
+  id: number;
   title: string;
   description: string;
   amount: number;
