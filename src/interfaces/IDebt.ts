@@ -4,8 +4,8 @@ interface IDebt {
   id: number;
   title: string;
   description: string;
-  date: string;
-  deadline?: string;
+  date: string | Date;
+  deadline?: string | Date;
   payments: IPayment[];
   paid: boolean;
 }
