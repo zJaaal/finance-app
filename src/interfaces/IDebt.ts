@@ -4,9 +4,10 @@ interface IDebt {
   id: number;
   title: string;
   description: string;
+  amount: number;
   date: string | Date;
-  payments: IPayment[];
   paid: boolean;
+  payments: IPayment[];
 }
 
 export default IDebt;
