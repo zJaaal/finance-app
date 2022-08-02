@@ -11,7 +11,7 @@ import ISavingState from "../reducers/saving/ISavingState";
 import ISaving from "../interfaces/ISaving";
 import {
   savingCleanActive,
-  savingDelete,
+  savingDeleteActive,
   savingSelectActive,
 } from "../actions/saving/savingActions";
 import SavingActions from "../actions/saving/enum/SavingActions";
@@ -27,7 +27,7 @@ const SavingsPage = () => {
   );
 
   const handleDelete = () => {
-    dispatch<savingDelete>({ type: SavingActions.SAVING_DELETE });
+    dispatch<savingDeleteActive>({ type: SavingActions.SAVING_DELETE_ACTIVE });
   };
 
   const handleRowClick = () => {

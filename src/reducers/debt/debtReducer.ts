@@ -29,7 +29,18 @@ const initialState: IDebtState = {
       amount: 0,
       date: "07/28/2022",
       paid: true,
-      payments: [],
+      payments: [
+        {
+          id: 1,
+          amount: 10000,
+          date: "07/26/2022",
+        },
+        {
+          id: 2,
+          amount: 5000,
+          date: "08/28/2022",
+        },
+      ],
     },
   ],
   activeDebt: null,
@@ -63,20 +74,11 @@ const debtReducer = (state: IDebtState = initialState, action: debtActions) => {
         ),
       };
     }
-    case DebtActions.DEBT_DELETE: {
+    case DebtActions.DEBT_DELETE_ACTIVE: {
       return {
         ...state,
         debts: state.debts.filter((debt) => debt.id != state.activeDebt?.id),
         activeDebt: null,
-      };
-    }
-    case DebtActions.DEBT_UPDATE_PAYMENTS: {
-      return {
-        ...state,
-        activeDebt: {
-          ...state.activeDebt,
-          payments: [...action.payload],
-        },
       };
     }
     default:

@@ -9,7 +9,7 @@ import ExpensesModal from "../components/expenses-page/ExpensesModal";
 import IExpenseState from "../reducers/expense/IExpenseState";
 import {
   expenseCleanActive,
-  expenseDelete,
+  expenseDeleteActive,
   expenseSelectActive,
 } from "../actions/expense/expenseActions";
 import ExpenseActions from "../actions/expense/enum/ExpenseActions";
@@ -26,7 +26,9 @@ const ExpensesPage = () => {
   );
 
   const handleDelete = () => {
-    dispatch<expenseDelete>({ type: ExpenseActions.EXPENSE_DELETE });
+    dispatch<expenseDeleteActive>({
+      type: ExpenseActions.EXPENSE_DELETE_ACTIVE,
+    });
   };
 
   const handleRowClick = () => {

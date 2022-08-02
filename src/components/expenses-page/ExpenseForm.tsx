@@ -16,7 +16,7 @@ import UpdateIcon from "@mui/icons-material/Update";
 import { IRootState } from "../../reducers/rootReducer";
 import {
   expenseAdd,
-  expenseUpdate,
+  expenseUpdateActive,
 } from "../../actions/expense/expenseActions";
 import IExpense from "../../interfaces/IExpense";
 import ExpenseActions from "../../actions/expense/enum/ExpenseActions";
@@ -47,8 +47,8 @@ const ExpenseForm = ({ handleClose }: { handleClose: Function }) => {
 
   const onSubmit: SubmitHandler<IExpense> = (data) => {
     if (activeExpense) {
-      dispatch<expenseUpdate>({
-        type: ExpenseActions.EXPENSE_UPDATE,
+      dispatch<expenseUpdateActive>({
+        type: ExpenseActions.EXPENSE_UPDATE_ACTIVE,
         payload: data,
       });
     } else {

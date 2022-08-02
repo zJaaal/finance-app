@@ -15,13 +15,15 @@ import DebtsModal from "../components/debts-page/DebtsModal";
 import IDebtState from "../reducers/debt/IDebtState";
 import {
   debtCleanActive,
-  debtDelete,
+  debtDeleteActive,
   debtSelectActive,
 } from "../actions/debt/debtActions";
 import DebtActions from "../actions/debt/enum/DebtActions";
+import { useNavigate } from "react-router-dom";
 
 const DebtsPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const debt: IDebtState = useSelector((state: IRootState) => state.debt);
 
@@ -29,9 +31,11 @@ const DebtsPage = () => {
     debt.activeDebt ? ModalType.DEBT : ModalType.GENERAL
   );
 
-  const handlePay = () => {};
+  const handlePay = () => {
+    navigate(`/payments/${debt.activeDebt?.id}`);
+  };
   const handleDelete = () => {
-    dispatch<debtDelete>({ type: DebtActions.DEBT_DELETE });
+    dispatch<debtDeleteActive>({ type: DebtActions.DEBT_DELETE_ACTIVE });
   };
 
   const handleRowClick = () => {
@@ -126,7 +130,7 @@ const DebtsPage = () => {
             color="success"
             disabled={!debt.activeDebt}
           >
-            Pay
+            {debt.activeDebt?.paid ? "Payments" : "Pay"}
           </Button>
         </Grid>
         <Grid item>

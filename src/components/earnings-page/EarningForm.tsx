@@ -12,16 +12,16 @@ import Typography from "@mui/material/Typography";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import AddIcon from "@mui/icons-material/Add";
 import UpdateIcon from "@mui/icons-material/Update";
-import IPayment from "../../interfaces/IPayment";
+import IEarning from "../../interfaces/IEarning";
 
 import { IRootState } from "../../reducers/rootReducer";
 import {
   earningAdd,
-  earningUpdate,
+  earningUpdateActive,
 } from "../../actions/earning/earningActions";
 import EarningActions from "../../actions/earning/enum/EarningActions";
 
-const initialValues: IPayment = {
+const initialValues: IEarning = {
   id: Date.now(),
   title: "",
   description: "",
@@ -30,14 +30,14 @@ const initialValues: IPayment = {
 };
 
 const EarningForm = ({ handleClose }: { handleClose: Function }) => {
-  const { activeEarning }: { activeEarning: IPayment | null } = useSelector(
+  const { activeEarning }: { activeEarning: IEarning | null } = useSelector(
     (state: IRootState) => state.earning
   );
   const {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<IPayment>({
+  } = useForm<IEarning>({
     defaultValues: activeEarning || initialValues,
     mode: "onBlur",
     reValidateMode: "onChange",
@@ -45,10 +45,10 @@ const EarningForm = ({ handleClose }: { handleClose: Function }) => {
 
   const dispatch = useDispatch();
 
-  const onSubmit: SubmitHandler<IPayment> = (data) => {
+  const onSubmit: SubmitHandler<IEarning> = (data) => {
     if (activeEarning) {
-      dispatch<earningUpdate>({
-        type: EarningActions.EARNING_UPDATE,
+      dispatch<earningUpdateActive>({
+        type: EarningActions.EARNING_UPDATE_ACTIVE,
         payload: data,
       });
     } else {

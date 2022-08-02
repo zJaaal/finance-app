@@ -1,4 +1,4 @@
-import IPayment from "../../interfaces/IPayment";
+import IEarning from "../../interfaces/IEarning";
 
 import IEarningState from "./IEarningState";
 import { earningActions } from "../../actions/earning/earningActions";
@@ -47,7 +47,7 @@ const earningReducer = (
         activeEarning: null,
       };
     }
-    case EarningActions.EARNING_UPDATE: {
+    case EarningActions.EARNING_UPDATE_ACTIVE: {
       return {
         ...state,
         earnings: state.earnings.map((earning) =>
@@ -55,7 +55,7 @@ const earningReducer = (
         ),
       };
     }
-    case EarningActions.EARNING_DELETE: {
+    case EarningActions.EARNING_DELETE_ACTIVE: {
       return {
         ...state,
         earnings: state.earnings.filter(

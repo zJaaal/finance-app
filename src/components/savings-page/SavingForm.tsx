@@ -14,7 +14,10 @@ import AddIcon from "@mui/icons-material/Add";
 import UpdateIcon from "@mui/icons-material/Update";
 
 import { IRootState } from "../../reducers/rootReducer";
-import { savingAdd, savingUpdate } from "../../actions/saving/savingActions";
+import {
+  savingAdd,
+  savingUpdateActive,
+} from "../../actions/saving/savingActions";
 import ISaving from "../../interfaces/ISaving";
 import SavingActions from "../../actions/saving/enum/SavingActions";
 
@@ -42,8 +45,8 @@ const SavingForm = ({ handleClose }: { handleClose: Function }) => {
 
   const onSubmit: SubmitHandler<ISaving> = (data) => {
     if (activeSaving) {
-      dispatch<savingUpdate>({
-        type: SavingActions.SAVING_UPDATE,
+      dispatch<savingUpdateActive>({
+        type: SavingActions.SAVING_UPDATE_ACTIVE,
         payload: data,
       });
     } else {

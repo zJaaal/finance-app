@@ -3,12 +3,12 @@ import { GridRowsProp, GridColDef, DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../reducers/rootReducer";
 import {
-  earningDelete,
+  earningDeleteActive,
   earningSelectActive,
   earningCleanActive,
 } from "../actions/earning/earningActions";
 import EarningsModal from "../components/earnings-page/EarningsModal";
-import IPayment from "../interfaces/IPayment";
+import IEarning from "../interfaces/IEarning";
 import IEarningState from "../reducers/earning/IEarningState";
 import EarningActions from "../actions/earning/enum/EarningActions";
 import ModalType from "../hooks/open/ModalType";
@@ -26,20 +26,22 @@ const EarningsPage = () => {
   );
 
   const handleDelete = () => {
-    dispatch<earningDelete>({ type: EarningActions.EARNING_DELETE });
+    dispatch<earningDeleteActive>({
+      type: EarningActions.EARNING_DELETE_ACTIVE,
+    });
   };
 
   const handleRowClick = () => {
     dispatch<earningCleanActive>({ type: EarningActions.EARNING_CLEAN_ACTIVE });
   };
-  const handleRowDoubleClick = ({ row }: { row: IPayment }) => {
+  const handleRowDoubleClick = ({ row }: { row: IEarning }) => {
     dispatch<earningSelectActive>({
       type: EarningActions.EARNING_SELECT_ACTIVE,
       payload: row,
     });
   };
 
-  const rows: GridRowsProp<IPayment> = earning.earnings;
+  const rows: GridRowsProp<IEarning> = earning.earnings;
   const columns: GridColDef[] = [
     {
       field: "id",

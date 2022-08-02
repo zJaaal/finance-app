@@ -20,13 +20,8 @@ export type debtUpdateActive = {
   payload: IDebt;
 };
 
-export type debtDelete = {
-  type: typeof DebtActions.DEBT_DELETE;
-};
-
-export type debtUpdatePayments = {
-  type: typeof DebtActions.DEBT_UPDATE_PAYMENTS;
-  payload: IPayment[];
+export type debtDeleteActive = {
+  type: typeof DebtActions.DEBT_DELETE_ACTIVE;
 };
 
 export type debtActions =
@@ -34,5 +29,4 @@ export type debtActions =
   | debtSelectActive
   | debtCleanActive
   | debtUpdateActive
-  | debtDelete
-  | debtUpdatePayments;
+  | debtDeleteActive;

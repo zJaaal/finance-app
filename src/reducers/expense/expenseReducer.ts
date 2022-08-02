@@ -45,7 +45,7 @@ const expenseReducer = (
         activeExpense: null,
       };
     }
-    case ExpenseActions.EXPENSE_UPDATE: {
+    case ExpenseActions.EXPENSE_UPDATE_ACTIVE: {
       return {
         ...state,
         expenses: state.expenses.map((expense) =>
@@ -53,7 +53,7 @@ const expenseReducer = (
         ),
       };
     }
-    case ExpenseActions.EXPENSE_DELETE: {
+    case ExpenseActions.EXPENSE_DELETE_ACTIVE: {
       return {
         ...state,
         expenses: state.expenses.filter(

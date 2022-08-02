@@ -46,7 +46,7 @@ const savingReducer = (
         activeSaving: null,
       };
     }
-    case SavingActions.SAVING_UPDATE: {
+    case SavingActions.SAVING_UPDATE_ACTIVE: {
       return {
         ...state,
         savings: state.savings.map((saving) =>
@@ -54,7 +54,7 @@ const savingReducer = (
         ),
       };
     }
-    case SavingActions.SAVING_DELETE: {
+    case SavingActions.SAVING_DELETE_ACTIVE: {
       return {
         ...state,
         savings: state.savings.filter(

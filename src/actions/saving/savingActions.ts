@@ -6,13 +6,13 @@ export type savingAdd = {
   payload: ISaving;
 };
 
-export type savingUpdate = {
-  type: typeof SavingActions.SAVING_UPDATE;
+export type savingUpdateActive = {
+  type: typeof SavingActions.SAVING_UPDATE_ACTIVE;
   payload: ISaving;
 };
 
-export type savingDelete = {
-  type: typeof SavingActions.SAVING_DELETE;
+export type savingDeleteActive = {
+  type: typeof SavingActions.SAVING_DELETE_ACTIVE;
 };
 
 export type savingSelectActive = {
@@ -26,7 +26,7 @@ export type savingCleanActive = {
 
 export type savingActions =
   | savingAdd
-  | savingUpdate
-  | savingDelete
+  | savingUpdateActive
+  | savingDeleteActive
   | savingSelectActive
   | savingCleanActive;

@@ -6,13 +6,13 @@ export type expenseAdd = {
   payload: IExpense;
 };
 
-export type expenseUpdate = {
-  type: typeof ExpenseActions.EXPENSE_UPDATE;
+export type expenseUpdateActive = {
+  type: typeof ExpenseActions.EXPENSE_UPDATE_ACTIVE;
   payload: IExpense;
 };
 
-export type expenseDelete = {
-  type: typeof ExpenseActions.EXPENSE_DELETE;
+export type expenseDeleteActive = {
+  type: typeof ExpenseActions.EXPENSE_DELETE_ACTIVE;
 };
 
 export type expenseSelectActive = {
@@ -26,7 +26,7 @@ export type expenseCleanActive = {
 
 export type expenseActions =
   | expenseAdd
-  | expenseUpdate
-  | expenseDelete
+  | expenseUpdateActive
+  | expenseDeleteActive
   | expenseSelectActive
   | expenseCleanActive;
