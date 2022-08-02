@@ -1,8 +1,8 @@
-import IPayment from "../../interfaces/IPayment";
+import IEarning from "../../interfaces/IEarning";
 
 interface IEarningState {
-  earnings: IPayment[];
-  activeEarning: IPayment | null;
+  earnings: IEarning[];
+  activeEarning: IEarning | null;
 }
 
 export default IEarningState;
