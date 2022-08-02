@@ -11,6 +11,10 @@ import SavingActions from "../../actions/saving/enum/SavingActions";
 
 import { expenseCleanActive } from "../../actions/expense/expenseActions";
 import ExpenseActions from "../../actions/expense/enum/ExpenseActions";
+import { debtCleanActive } from "../../actions/debt/debtActions";
+import DebtActions from "../../actions/debt/enum/DebtActions";
+import { paymentCleanActive } from "../../actions/payment/paymentActions";
+import PaymentActions from "../../actions/payment/enum/PaymentActions";
 
 const useOpen = (type: ModalType) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,8 +44,20 @@ const useOpen = (type: ModalType) => {
         break;
       }
       case ModalType.DEBT: {
+        dispatch<debtCleanActive>({
+          type: DebtActions.DEBT_CLEAN_ACTIVE,
+        });
         setIsOpen(false);
+        break;
       }
+      case ModalType.PAYMENT: {
+        setIsOpen(false);
+        dispatch<paymentCleanActive>({
+          type: PaymentActions.PAYMENT_CLEAN_ACTIVE,
+        });
+        break;
+      }
+
       default:
         return setIsOpen(false);
     }
