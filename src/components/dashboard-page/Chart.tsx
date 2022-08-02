@@ -42,7 +42,12 @@ const Chart = ({ color, type }: { color: string; type: string }) => {
   ];
 
   return (
-    <ResponsiveContainer height={180} width={"80%"}>
+    <ResponsiveContainer
+      minHeight={100}
+      height={"100%"}
+      maxHeight={180}
+      width={"90%"}
+    >
       <LineChart data={expenses}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />

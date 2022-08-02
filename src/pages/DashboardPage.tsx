@@ -6,29 +6,14 @@ import ChartGroup from "../components/dashboard-page/ChartGroup";
 
 const DashboardPage = () => {
   return (
-    <>
-      <Grid
-        container
-        item
-        justifyContent={"space-between"}
-        alignItems={"start"}
-        columnSpacing={2}
-        rowSpacing={2}
-        padding={2}
-        flexWrap="wrap"
-      >
+    <Grid container item xs direction={"column"} justifyContent={"flex-start"}>
+      <Grid item xs={3}>
         <Cards />
       </Grid>
-      <Grid
-        container
-        item
-        justifyContent={"space-between"}
-        padding={2}
-        sx={{ justifyContent: { xs: "center", sm: "center" } }}
-      >
+      <Grid item xs container>
         <ChartGroup />
       </Grid>
-    </>
+    </Grid>
   );
 };
 

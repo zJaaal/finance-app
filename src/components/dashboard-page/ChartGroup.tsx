@@ -4,7 +4,12 @@ import Chart from "./Chart";
 
 const ChartGroup = () => {
   return (
-    <>
+    <Grid
+      container
+      item
+      justifyContent={"space-between"}
+      sx={{ justifyContent: { xs: "center", sm: "center" } }}
+    >
       <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
         <Chart color="#1976d2" type="Balance" />
       </Grid>
@@ -41,7 +46,7 @@ const ChartGroup = () => {
       >
         <Chart color="#ed6c02" type="Expenses" />
       </Grid>
-    </>
+    </Grid>
   );
 };
 

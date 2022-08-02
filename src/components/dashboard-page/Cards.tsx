@@ -7,7 +7,16 @@ import React from "react";
 
 const Cards = () => {
   return (
-    <>
+    <Grid
+      container
+      item
+      justifyContent={"space-between"}
+      alignItems={"start"}
+      columnSpacing={2}
+      rowSpacing={2}
+      padding={2}
+      flexWrap="wrap"
+    >
       <Grid
         container
         item
@@ -165,7 +174,7 @@ const Cards = () => {
           </Typography>
         </Grid>
       </Grid>
-    </>
+    </Grid>
   );
 };
 
