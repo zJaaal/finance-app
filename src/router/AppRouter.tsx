@@ -10,23 +10,15 @@ import SavingsPage from "../pages/SavingsPage";
 import SettingsPage from "../pages/SettingsPage";
 import EarningsPage from "../pages/EarningsPage";
 import PaymentsPage from "../pages/PaymentsPage";
+import DashboardRoutes from "./DashboardRoutes";
 
 const AppRouter = () => {
   return (
     <Grid container direction={"column"} height={"inherit"}>
       {/* This bar should be online on Private Routes */}
-      <Grid item width={"100%"} xs={1}>
-        <NavBar />
-      </Grid>
       <Routes>
         {/* Private Routes */}
-        <Route path="/" element={<DashboardPage />} />
-        <Route path="/earnings" element={<EarningsPage />} />
-        <Route path="/expenses" element={<ExpensesPage />} />
-        <Route path="/debts" element={<DebtsPage />} />
-        <Route path="/savings" element={<SavingsPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/payments/:debtId" element={<PaymentsPage />} />
+        <Route path="/*" element={<DashboardRoutes />} />
 
         {/* Public Routes */}
         <Route path="/login" element={<LoginPage />} />
