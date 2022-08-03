@@ -1,0 +1,7 @@
+enum AuthActions {
+  AUTH_LOGIN = "AUTH_LOGIN",
+  AUTH_CHECKING_FINISHED = "AUTH_CHECKING_FINISHED",
+  AUTH_LOGOUT = "AUTH_LOGOUT",
+}
+
+export default AuthActions;
