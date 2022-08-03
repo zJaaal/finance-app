@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import authReducer from "./auth/authReducer";
 import debtReducer from "./debt/debtReducer";
 import earningReducer from "./earning/earningReducer";
 import expenseReducer from "./expense/expenseReducer";
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   expense: expenseReducer,
   debt: debtReducer,
   payment: paymentReducer,
+  auth: authReducer,
 });
 
 export type IRootState = ReturnType<typeof rootReducer>;
