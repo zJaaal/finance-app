@@ -34,9 +34,9 @@ const LoginPage = () => {
   });
 
   const submitHandler = (data: IUserLogin) => {
-    console.log(data);
     dispatch(startLogin(data));
   };
+
   return (
     <Grid
       container

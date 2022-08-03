@@ -7,7 +7,7 @@ import { ThunkAction, ThunkDispatch } from "redux-thunk";
 export const startLogin =
   (user: IUserLogin): ThunkAction<void, IAuthState, {}, authLogin> =>
   (dispatch: ThunkDispatch<IAuthState, {}, authLogin>) => {
-    return dispatch({
+    dispatch({
       type: AuthActions.AUTH_LOGIN,
       payload: {
         uid: Date.now(),
