@@ -11,6 +11,8 @@ import SettingsPage from "../pages/SettingsPage";
 import EarningsPage from "../pages/EarningsPage";
 import PaymentsPage from "../pages/PaymentsPage";
 import DashboardRoutes from "./DashboardRoutes";
+import PrivateRoutes from "./PrivateRoutes";
+import PublicRoutes from "./PublicRoutes";
 
 const AppRouter = () => {
   return (
@@ -18,10 +20,24 @@ const AppRouter = () => {
       {/* This bar should be online on Private Routes */}
       <Routes>
         {/* Private Routes */}
-        <Route path="/*" element={<DashboardRoutes />} />
+        <Route
+          path="/*"
+          element={
+            <PrivateRoutes>
+              <DashboardRoutes />
+            </PrivateRoutes>
+          }
+        />
 
         {/* Public Routes */}
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoutes>
+              <LoginPage />
+            </PublicRoutes>
+          }
+        />
       </Routes>
     </Grid>
   );
