@@ -1,18 +1,11 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
-import NavBar from "../components/layout/NavBar";
-import DashboardPage from "../pages/DashboardPage";
-import LoginPage from "../pages/LoginPage";
-import ExpensesPage from "../pages/ExpensesPage";
-import DebtsPage from "../pages/DebtsPage";
-import SavingsPage from "../pages/SavingsPage";
-import SettingsPage from "../pages/SettingsPage";
-import EarningsPage from "../pages/EarningsPage";
-import PaymentsPage from "../pages/PaymentsPage";
+import LoginPage from "../pages/public-pages/LoginPage";
 import DashboardRoutes from "./DashboardRoutes";
 import PrivateRoutes from "./PrivateRoutes";
 import PublicRoutes from "./PublicRoutes";
+import AuthRoutes from "./AuthRoutes";
 
 const AppRouter = () => {
   return (
@@ -31,10 +24,10 @@ const AppRouter = () => {
 
         {/* Public Routes */}
         <Route
-          path="/login"
+          path="/auth/*"
           element={
             <PublicRoutes>
-              <LoginPage />
+              <AuthRoutes />
             </PublicRoutes>
           }
         />
