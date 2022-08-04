@@ -2,23 +2,21 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Grid, Typography, Button } from "@mui/material";
 import { GridRowsProp, GridColDef, DataGrid } from "@mui/x-data-grid";
-
-import ModalType from "../hooks/open/ModalType";
-import useOpen from "../hooks/open/useOpen";
-import IDebt from "../interfaces/IDebt";
-import IPayment from "../interfaces/IPayment";
-import IPaymentState from "../reducers/payment/IPaymentState";
-import PaymentActions from "../actions/payment/enum/PaymentActions";
-import PaymentsModal from "../components/payments-page/PaymentsModal";
-import { IRootState } from "../reducers/rootReducer";
 import { useEffect } from "react";
+import PaymentActions from "../../actions/payment/enum/PaymentActions";
 import {
+  paymentsLoaded,
   paymentCleanActive,
   paymentDeleteActive,
   paymentSelectActive,
-  paymentsLoaded,
-} from "../actions/payment/paymentActions";
-import DebtActions from "../actions/debt/enum/DebtActions";
+} from "../../actions/payment/paymentActions";
+import PaymentsModal from "../../components/payments-page/PaymentsModal";
+import ModalType from "../../hooks/open/ModalType";
+import useOpen from "../../hooks/open/useOpen";
+import IDebt from "../../interfaces/IDebt";
+import IPayment from "../../interfaces/IPayment";
+import IPaymentState from "../../reducers/payment/IPaymentState";
+import { IRootState } from "../../reducers/rootReducer";
 
 const PaymentsPage = () => {
   const dispatch = useDispatch();

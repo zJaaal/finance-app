@@ -1,47 +1,47 @@
 import { Grid, Typography, Button } from "@mui/material";
 import { GridRowsProp, GridColDef, DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
-import { IRootState } from "../reducers/rootReducer";
+import ExpenseActions from "../../actions/expense/enum/ExpenseActions";
 import {
-  earningDeleteActive,
-  earningSelectActive,
-  earningCleanActive,
-} from "../actions/earning/earningActions";
-import EarningsModal from "../components/earnings-page/EarningsModal";
-import IEarning from "../interfaces/IEarning";
-import IEarningState from "../reducers/earning/IEarningState";
-import EarningActions from "../actions/earning/enum/EarningActions";
-import ModalType from "../hooks/open/ModalType";
-import useOpen from "../hooks/open/useOpen";
+  expenseDeleteActive,
+  expenseCleanActive,
+  expenseSelectActive,
+} from "../../actions/expense/expenseActions";
+import ExpensesModal from "../../components/expenses-page/ExpensesModal";
+import ModalType from "../../hooks/open/ModalType";
+import useOpen from "../../hooks/open/useOpen";
+import IExpense from "../../interfaces/IExpense";
+import IExpenseState from "../../reducers/expense/IExpenseState";
+import { IRootState } from "../../reducers/rootReducer";
 
-const EarningsPage = () => {
+const ExpensesPage = () => {
   const dispatch = useDispatch();
 
-  const earning: IEarningState = useSelector(
-    (state: IRootState) => state.earning
+  const expense: IExpenseState = useSelector(
+    (state: IRootState) => state.expense
   );
 
   const { isOpen, handleOpen, handleClose } = useOpen(
-    earning.activeEarning ? ModalType.EARNING : ModalType.GENERAL
+    expense.activeExpense ? ModalType.EXPENSE : ModalType.GENERAL
   );
 
   const handleDelete = () => {
-    dispatch<earningDeleteActive>({
-      type: EarningActions.EARNING_DELETE_ACTIVE,
+    dispatch<expenseDeleteActive>({
+      type: ExpenseActions.EXPENSE_DELETE_ACTIVE,
     });
   };
 
   const handleRowClick = () => {
-    dispatch<earningCleanActive>({ type: EarningActions.EARNING_CLEAN_ACTIVE });
+    dispatch<expenseCleanActive>({ type: ExpenseActions.EXPENSE_CLEAN_ACTIVE });
   };
-  const handleRowDoubleClick = ({ row }: { row: IEarning }) => {
-    dispatch<earningSelectActive>({
-      type: EarningActions.EARNING_SELECT_ACTIVE,
+  const handleRowDoubleClick = ({ row }: { row: IExpense }) => {
+    dispatch<expenseSelectActive>({
+      type: ExpenseActions.EXPENSE_SELECT_ACTIVE,
       payload: row,
     });
   };
 
-  const rows: GridRowsProp<IEarning> = earning.earnings;
+  const rows: GridRowsProp<IExpense> = expense.expenses;
   const columns: GridColDef[] = [
     {
       field: "id",
@@ -68,10 +68,10 @@ const EarningsPage = () => {
   ];
   return (
     <Grid container item xs direction={"column"} height={"100%"}>
-      <EarningsModal isOpen={isOpen} handleClose={handleClose} />
+      <ExpensesModal isOpen={isOpen} handleClose={handleClose} />
       <Grid item xs={1} padding={2}>
         <Typography variant="h4" color="initial" align="center">
-          Earnings
+          Expenses
         </Typography>
       </Grid>
       <Grid item xs={8} padding={2}>
@@ -95,14 +95,14 @@ const EarningsPage = () => {
             variant={"contained"}
             onClick={handleDelete}
             color="error"
-            disabled={!earning.activeEarning}
+            disabled={!expense.activeExpense}
           >
             Delete
           </Button>
         </Grid>
         <Grid item>
           <Button variant={"contained"} onClick={handleOpen}>
-            {!earning.activeEarning ? "Add Earning" : "Update"}
+            {!expense.activeExpense ? "Add Expense" : "Update"}
           </Button>
         </Grid>
       </Grid>
@@ -110,4 +110,4 @@ const EarningsPage = () => {
   );
 };
 
-export default EarningsPage;
+export default ExpensesPage;

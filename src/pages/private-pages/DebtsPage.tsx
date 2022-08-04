@@ -6,20 +6,20 @@ import {
   GridRenderCellParams,
 } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
-import { IRootState } from "../reducers/rootReducer";
 
-import ModalType from "../hooks/open/ModalType";
-import useOpen from "../hooks/open/useOpen";
-import IDebt from "../interfaces/IDebt";
-import DebtsModal from "../components/debts-page/DebtsModal";
-import IDebtState from "../reducers/debt/IDebtState";
-import {
-  debtCleanActive,
-  debtDeleteActive,
-  debtSelectActive,
-} from "../actions/debt/debtActions";
-import DebtActions from "../actions/debt/enum/DebtActions";
 import { useNavigate } from "react-router-dom";
+import {
+  debtDeleteActive,
+  debtCleanActive,
+  debtSelectActive,
+} from "../../actions/debt/debtActions";
+import DebtActions from "../../actions/debt/enum/DebtActions";
+import DebtsModal from "../../components/debts-page/DebtsModal";
+import ModalType from "../../hooks/open/ModalType";
+import useOpen from "../../hooks/open/useOpen";
+import IDebt from "../../interfaces/IDebt";
+import IDebtState from "../../reducers/debt/IDebtState";
+import { IRootState } from "../../reducers/rootReducer";
 
 const DebtsPage = () => {
   const dispatch = useDispatch();

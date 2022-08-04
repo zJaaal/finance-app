@@ -1,13 +1,13 @@
 import { Grid } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import NavBar from "../components/layout/NavBar";
-import DashboardPage from "../pages/DashboardPage";
-import DebtsPage from "../pages/DebtsPage";
-import EarningsPage from "../pages/EarningsPage";
-import ExpensesPage from "../pages/ExpensesPage";
-import PaymentsPage from "../pages/PaymentsPage";
-import SavingsPage from "../pages/SavingsPage";
-import SettingsPage from "../pages/SettingsPage";
+import DashboardPage from "../pages/private-pages/DashboardPage";
+import DebtsPage from "../pages/private-pages/DebtsPage";
+import EarningsPage from "../pages/private-pages/EarningsPage";
+import ExpensesPage from "../pages/private-pages/ExpensesPage";
+import PaymentsPage from "../pages/private-pages/PaymentsPage";
+import SavingsPage from "../pages/private-pages/SavingsPage";
+import SettingsPage from "../pages/private-pages/SettingsPage";
 
 const DashboardRoutes = () => {
   return (

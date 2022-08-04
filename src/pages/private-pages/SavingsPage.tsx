@@ -2,21 +2,21 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
-import { IRootState } from "../reducers/rootReducer";
+import { IRootState } from "../../reducers/rootReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { DataGrid, GridColDef, GridRowsProp } from "@mui/x-data-grid";
 
-import SavingsModal from "../components/savings-page/SavingsModal";
-import ISavingState from "../reducers/saving/ISavingState";
-import ISaving from "../interfaces/ISaving";
+import SavingsModal from "../../components/savings-page/SavingsModal";
+import ISavingState from "../../reducers/saving/ISavingState";
+import ISaving from "../../interfaces/ISaving";
 import {
   savingCleanActive,
   savingDeleteActive,
   savingSelectActive,
-} from "../actions/saving/savingActions";
-import SavingActions from "../actions/saving/enum/SavingActions";
-import useOpen from "../hooks/open/useOpen";
-import ModalType from "../hooks/open/ModalType";
+} from "../../actions/saving/savingActions";
+import SavingActions from "../../actions/saving/enum/SavingActions";
+import useOpen from "../../hooks/open/useOpen";
+import ModalType from "../../hooks/open/ModalType";
 
 const SavingsPage = () => {
   const dispatch = useDispatch();

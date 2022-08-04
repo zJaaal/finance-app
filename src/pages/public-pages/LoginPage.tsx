@@ -1,3 +1,7 @@
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { ThunkDispatch } from "redux-thunk";
+import { authLogin, startLogin } from "../../actions/auth/authActions";
 import { useForm, Controller } from "react-hook-form";
 import {
   Button,
@@ -7,13 +11,10 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import IUserLogin from "../interfaces/IUserLogin";
 import GoogleIcon from "@mui/icons-material/Google";
-import { useDispatch } from "react-redux";
-import { authLogin, startLogin } from "../actions/auth/authActions";
-import { Dispatch } from "react";
-import { ThunkAction, ThunkDispatch } from "redux-thunk";
-import IAuthState from "../reducers/auth/IAuthState";
+
+import IAuthState from "../../reducers/auth/IAuthState";
+import IUserLogin from "../../interfaces/IUserLogin";
 
 const initialValues: IUserLogin = {
   username: "",
@@ -22,6 +23,7 @@ const initialValues: IUserLogin = {
 
 const LoginPage = () => {
   const dispatch = useDispatch<ThunkDispatch<IAuthState, {}, authLogin>>();
+  const navigate = useNavigate();
 
   const {
     handleSubmit,
@@ -119,8 +121,8 @@ const LoginPage = () => {
                 rules={{
                   required: "Password is required",
                   minLength: {
-                    value: 4,
-                    message: "Minimun length is 6 characters",
+                    value: 8,
+                    message: "Minimun length is 8 characters",
                   },
                   maxLength: {
                     value: 20,
@@ -149,7 +151,9 @@ const LoginPage = () => {
               >
                 Google
               </Button>
-              <Button variant="text">Register</Button>
+              <Button variant="text" onClick={() => navigate("/auth/register")}>
+                Register
+              </Button>
             </Grid>
           </Grid>
         </Paper>

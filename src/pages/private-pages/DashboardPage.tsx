@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 
-import "../styles/pages/MainPage.css";
-import Cards from "../components/dashboard-page/Cards";
-import ChartGroup from "../components/dashboard-page/ChartGroup";
+import Cards from "../../components/dashboard-page/Cards";
+import ChartGroup from "../../components/dashboard-page/ChartGroup";
+import "../../styles/pages/MainPage.css";
 
 const DashboardPage = () => {
   return (
