@@ -16,7 +16,7 @@ const PrivateRoutes = ({
 
   useEffect(() => {
     if (!uid) {
-      navigate("/login");
+      navigate("/auth/login");
     }
   }, [uid]);
   return children;
